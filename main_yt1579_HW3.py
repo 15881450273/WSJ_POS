@@ -154,15 +154,33 @@ for i in range(len(line)):
 
 
 f = open('submission.pos','w')
-for i in range(len(line)):
-    count+=1
-    f.write(line[i]+'\t'+answer[i]+'\n')
-    #if answer[i] == '.':
-        #f.write('\n')
+countan = 0
+with open('WSJ_23.words','r') as filewj:
+    for linnwj in filewj:
+        lable = str(linnwj)
+        if lable != "\n":
+            lable = str(lable.replace('\n', ''))
+            strcom = lable + '\t' + answer[countan]
+            print(strcom)
+            f.write( strcom+ '\n')
+            countan = countan+1
+        else:
+            f.write('\n')
+
+filewj.close()
 f.close()
+# for i in range(len(line)-1):
+#
+#     if line[i] == """.""" and line[i+1] != """''""" and line[i+1] != """``""" :
+#         f.write('\n')
+#     if line[i] == """''""" and line[i-1] == """.""":
+#         f.write('\n')
+#     if line[i] == """``""" and line[i-1] == """.""":
+#         f.write('\n')
+# f.close()
 
 
-print(count)
+
 
 
 
